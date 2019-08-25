@@ -24,8 +24,8 @@ public class Controller {
 			System.out.println("###########################################");
 			System.out.println("-------------------------------------------");
 			System.out.println("\t\t***MENU***");
-			System.out.println("\t1 - sign in");
-			System.out.println("\t2 - log in");
+			System.out.println("\t1 - Log In");
+			System.out.println("\t2 - Sign Up");
 			System.out.println("\tc - exit");
 			switch (key = scanner.nextLine()) {
 			case "1":

@@ -86,7 +86,7 @@ public class Controller {
 		}
 	}
 
-	public static void search(Scanner scanner) {
+	private static void search(Scanner scanner) {
 		String key = "";
 		String bookName;
 		String bookAuthor;

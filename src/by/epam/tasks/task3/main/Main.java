@@ -5,7 +5,10 @@ import java.util.Scanner;
 import by.epam.tasks.task3.client.Client;
 import by.epam.tasks.task3.server.Server;
 
+/* создайте клиент-серверное приложение “Архив”. */
+
 public class Main {
+	
 	public static final String GET_REQUEST = "get";
 	public static final String CHANGE_REQUEST = "change";
 	public static final String CREATE_REQUEST = "create";

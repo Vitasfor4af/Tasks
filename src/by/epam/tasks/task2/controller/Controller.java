@@ -69,7 +69,7 @@ public class Controller {
 		}
 	}
 
-	public static void search(Scanner scanner) {
+	private static void search(Scanner scanner) {
 		String key = "";
 		String subject;
 		String date;

@@ -58,9 +58,7 @@ public class Controller {
 			case "C":
 				System.out.println("Exit from program");
 				key = "Y";
-				if (key.equals("Y")) {
-					scanner.close();
-				}
+				scanner.close();
 				break;
 			default:
 				doDefault(key, scanner);
@@ -149,9 +147,9 @@ public class Controller {
 	}
 
 	private static void doDefault(String key, Scanner scanner) {
-		System.out.println("Unsupported key was pressed");
-		System.out.println("Do you want to go back [Y]?");
-		key = scanner.nextLine();
+		System.out.println("Unsupported key was pressed\npress Enter to return");
+		scanner.nextLine();
+		key = "Y";
 		if (key.equals("Y") || key.equals("y")) {
 			return;
 		} else if (!(key.equals("Y") || key.equals("y"))) {

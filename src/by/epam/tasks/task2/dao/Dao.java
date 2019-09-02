@@ -12,7 +12,7 @@ import by.epam.tasks.task2.model.entity.Note;
 
 public class Dao {
 
-	private static final String NOTE_FILE_PATH = "src/by/epam/tasks/task2/resources/noteList";
+	public static final String NOTE_FILE_PATH = "src/by/epam/tasks/task2/resources/noteList";
 
 	public static void addNoteToFile(String subject, String date, String email, String message) {
 		if (!isValidDate(date)) {

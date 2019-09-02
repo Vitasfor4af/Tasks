@@ -71,12 +71,12 @@ public class Ship implements Runnable {
 		int portNumber = (int) Math.round(Math.random() * (port.piarList.length - 1));
 		try {
 			System.out.println(this + " is working...");
-			if(desire == 0) {
+			if (desire == 0) {
 				port.getPiarByInt(portNumber).loadFromShip(this);
-			} else if(desire == 1) {
+			} else if (desire == 1) {
 				port.getPiarByInt(portNumber).unloadForShip(this);
 			}
-			System.out.println(this + " is complete work.");
+			System.out.println(this + " is finished work.");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

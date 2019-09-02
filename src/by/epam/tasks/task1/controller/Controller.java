@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import by.epam.tasks.task1.dao.Dao;
 import by.epam.tasks.task1.logic.Logic;
-import by.epam.tasks.task1.model.entity.User;
+import by.epam.tasks.task1.model.entity.Library;
 import by.epam.tasks.task1.view.TextFormatter;
 
 /* создать консольное приложение “Учет книг в домашней библиотеке”. */
@@ -17,8 +17,8 @@ public class Controller {
 		String login;
 		String password;
 		String admin;
-		User user = new User();
-		Logic.addBookToList(user);
+		Library library = new Library();
+		Logic.addBookToList(library);
 		while (!(key.equals("Y") || key.equals("y"))) {
 			System.out.println("-------------------------------------------");
 			System.out.println("###########################################");
@@ -39,9 +39,9 @@ public class Controller {
 				}
 
 				if (Dao.searchUser(login, password).isAdmin()) {
-					adminMenu(scanner, user);
+					adminMenu(scanner, library);
 				} else {
-					userMenu(scanner, user);
+					userMenu(scanner, library);
 				}
 				break;
 			case "2":
@@ -75,9 +75,7 @@ public class Controller {
 			case "C":
 				System.out.println("Exit from program");
 				key = "Y";
-				if (key.equals("Y")) {
-					scanner.close();
-				}
+				scanner.close();
 				break;
 			default:
 				doDefault(key, scanner);
@@ -135,21 +133,21 @@ public class Controller {
 		}
 	}
 
-	private static void userMenu(Scanner scanner, User user) {
+	private static void userMenu(Scanner scanner, Library library) {
 		String key = "";
-		user.getBookList().clear();
-		Logic.addBookToList(user);
+		library.getBookList().clear();
+		Logic.addBookToList(library);
 		while (!(key.equals("Y") || key.equals("y"))) {
 			System.out.println("-------------------------------------------");
 			System.out.println("###########################################");
 			System.out.println("-------------------------------------------");
 			System.out.println("\t\t***USER MENU***");
 			System.out.println("\t1 - get book list");
-			System.out.println("\t2 - search book into file");
+			System.out.println("\t2 - search book into library");
 			System.out.println("\tc - back");
 			switch (key = scanner.nextLine()) {
 			case "1":
-				System.out.println(TextFormatter.formatBookList(user.getBookList()));
+				System.out.println(TextFormatter.formatBookList(library.getBookList()));
 				System.out.println("Do you want to go back [Y/N]?");
 				key = scanner.nextLine();
 				if (key.equals("Y") || key.equals("y")) {
@@ -171,7 +169,7 @@ public class Controller {
 		}
 	}
 
-	private static void adminMenu(Scanner scanner, User user) {
+	private static void adminMenu(Scanner scanner, Library library) {
 		String key = "";
 		String bookName;
 		String bookAuthor;
@@ -209,7 +207,7 @@ public class Controller {
 				bookAuthor = scanner.nextLine();
 
 				if (Dao.searchBook(bookName, bookAuthor)) {
-					Dao.removeBook(user, bookName, bookAuthor);
+					Dao.removeBook(library, bookName, bookAuthor);
 					System.out.println("Book with the name \"" + bookName + "\" and the author of \"" + bookAuthor
 							+ "\" has been deleted.");
 				} else {
@@ -234,9 +232,9 @@ public class Controller {
 	}
 
 	private static void doDefault(String key, Scanner scanner) {
-		System.out.println("Unsupported key was pressed");
-		System.out.println("Do you want to go back [Y]?");
-		key = scanner.nextLine();
+		System.out.println("Unsupported key was pressed\npress Enter to return");
+		scanner.nextLine();
+		key = "Y";
 		if (key.equals("Y") || key.equals("y")) {
 			return;
 		} else if (!(key.equals("Y") || key.equals("y"))) {

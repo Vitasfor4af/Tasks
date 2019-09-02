@@ -9,12 +9,13 @@ import java.util.Scanner;
 
 import by.epam.tasks.task1.dao.comparator.BookComparator;
 import by.epam.tasks.task1.model.entity.Book;
+import by.epam.tasks.task1.model.entity.Library;
 import by.epam.tasks.task1.model.entity.User;
 
 public class Dao {
 
-	private static final String USER_FILE_PATH = "src/by/epam/tasks/task1/resources/userList";
-	private static final String BOOK_FILE_PATH = "src/by/epam/tasks/task1/resources/bookList";
+	public static final String USER_FILE_PATH = "src/by/epam/tasks/task1/resources/userList";
+	public static final String BOOK_FILE_PATH = "src/by/epam/tasks/task1/resources/bookList";
 
 	public static void addUserToFile(String login, String password, boolean admin) {
 		if (!isValidLogin(login)) {
@@ -167,16 +168,16 @@ public class Dao {
 		return bookList;
 	}
 
-	public static void removeBook(User user, String name, String author) {
+	public static void removeBook(Library library, String name, String author) {
 		String newLine = "";
 		File file = new File(BOOK_FILE_PATH);
 		file.delete();
 		try (FileWriter fileWriter = new FileWriter(file, true)) {
-			for (int i = 0; i < user.getBookList().size(); i++) {
-				newLine = user.getBookList().get(i).getName() + "|" + user.getBookList().get(i).getAuthor() + "|"
-						+ user.getBookList().get(i).isElectronic() + "\n";
-				if (!(user.getBookList().get(i).getName().equals(name)
-						&& user.getBookList().get(i).getAuthor().equals(author))) {
+			for (int i = 0; i < library.getBookList().size(); i++) {
+				newLine = library.getBookList().get(i).getName() + "|" + library.getBookList().get(i).getAuthor() + "|"
+						+ library.getBookList().get(i).isElectronic() + "\n";
+				if (!(library.getBookList().get(i).getName().equals(name)
+						&& library.getBookList().get(i).getAuthor().equals(author))) {
 					fileWriter.write(newLine);
 					fileWriter.flush();
 				}

@@ -3,8 +3,8 @@ package by.epam.tasks.task1.model.entity;
 import java.util.ArrayList;
 
 public class Library {
-	ArrayList<Book> bookList = new ArrayList<Book>();
 	ArrayList<User> userList = new ArrayList<User>();
+	ArrayList<Book> bookList = new ArrayList<Book>();
 
 	public void addUser(User user) {
 		if (user != null) {

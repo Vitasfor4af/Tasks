@@ -46,7 +46,7 @@ public class Dao {
 		}
 	}
 
-	public static boolean searchUserByLogin(String login) {
+	public static boolean isExistsUser(String login) {
 		String[] values = null;
 		try (Scanner scanner = new Scanner(new File(USER_FILE_PATH))) {
 			scanner.useDelimiter("\\n");

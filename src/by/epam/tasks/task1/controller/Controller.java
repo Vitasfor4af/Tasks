@@ -47,20 +47,17 @@ public class Controller {
 			case "2":
 				System.out.println("Input login");
 				login = scanner.nextLine();
+
+				while (Dao.isExistsUser(login)) {
+					System.out.println("User with this login already exists, try again.");
+					System.out.println("Input login");
+					login = scanner.nextLine();
+				}
+
 				System.out.println("Input password");
 				password = scanner.nextLine();
 				System.out.println("Input access level (admin(true) or user(false))");
 				admin = scanner.nextLine();
-
-				while (Dao.searchUserByLogin(login)) {
-					System.out.println("User with this login already exists, try again.");
-					System.out.println("Input login");
-					login = scanner.nextLine();
-					System.out.println("Input password");
-					password = scanner.nextLine();
-					System.out.println("Input access level (admin(true) or user(false))");
-					admin = scanner.nextLine();
-				}
 
 				Dao.addUserToFile(login, password, Boolean.parseBoolean(admin));
 				System.out.println("Do you wish to exit from program[Y/N]?");
